@@ -21,14 +21,14 @@ public class CriaMenu {
 
 	// Cria menu de seleção para selecionar o tipo de conversão
 	// os tipos de seleção estão armazenados na variavel tiposDeConversao
-	public void CriaMenuConsersor() {
+	public void CriaMenuConversor() {
 		tipoDaConversao = (String) JOptionPane.showInputDialog(null, "Escolha uma opção:", "Menu",
 				JOptionPane.INFORMATION_MESSAGE, null, this.tiposDeConversao, this.tiposDeConversao[0]);
 
 		if (tipoDaConversao == null) {
 			JOptionPane.showMessageDialog(null, "Nenhuma opção de conversão selecionada.", "Aviso",
 					JOptionPane.WARNING_MESSAGE);
-			CriaMenuConsersor();
+			CriaMenuConversor();
 		}
 	}
 
@@ -55,6 +55,7 @@ public class CriaMenu {
 		try {
 			valorParaConversao = Double.parseDouble(numeroParaConversao);
 			Converte();
+			finalizaPrograma();
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "Entrada inválida. Digite um valor numérico.", "Erro",
 					JOptionPane.ERROR_MESSAGE);
@@ -99,4 +100,13 @@ public class CriaMenu {
 			break;
 		}
 	}
+	
+	public void finalizaPrograma() {
+		 int resposta = JOptionPane.showConfirmDialog(null, "Deseja continuar?");
+         	if (JOptionPane.OK_OPTION == resposta) {
+         		CriaMenuConversor();
+         	} else {
+         		JOptionPane.showMessageDialog(null, "Programa finalizado");
+	}
+}
 }
